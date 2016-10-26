@@ -1,0 +1,59 @@
+body{
+	background-color: #32292F;
+	color:#D1E3DD;
+}
+.container {
+    text-align: center;
+    
+}
+
+.channel {  /*dynamically created div to hold individual channels*/
+    display: inline-grid;
+    text-align: left;
+    display: block;
+    margin: 1em auto;
+    background-color: #575366;
+    border: 1px solid #D1E3DD;
+    overflow: hidden;
+    width: 600px;
+}
+
+.contents { /*channel name, online status*/
+    display: inline-block;
+    margin-left: .5em;
+}
+
+.online {
+    color: green;
+}
+
+p.status {
+    padding: 1em;
+    margin-left: 130px;
+}
+div.channel h2{
+    line-height: .5em;
+}
+
+div.channel img{
+	margin: 0 3em ;
+	border-radius: 55px;
+	padding:.7em;
+	width:100px;
+	float:left;
+}
+
+div#error h3{
+	padding: .7em;
+	float: left;
+}
+div#error p{
+	margin: 0 3em;
+}
+a:link{
+	color:#5762D5;
+	
+}
+a:visited{
+	color:##6240A1;
+}
