@@ -14,7 +14,7 @@
 
 $(document).ready(function(e){
    
-  	var channels = ["$$codeCamp", "FreeCodeCamp", "BobRoss", "NoCopyrightSounds", "Food", "MusicianPhysician", "whatwhatowowowo"];
+  	var channels = ["brunofin", "FreeCodeCamp", "BobRoss", "NoCopyrightSounds", "Food", "MusicianPhysician", "comster404"];
     var successResults = [];
     var errorResults = [];
 
