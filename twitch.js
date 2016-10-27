@@ -23,11 +23,11 @@ $(document).ready(function(e){
         newChannels.push($("input:first").val());
         //newChannels.sort();
         console.log(newChannels);
-        isOnline(newChannels, successResults, errorResults);
+        callChannels(newChannels, successResults, errorResults);
         event.preventDefault();
     });
 
-    isOnline(channels, successResults, errorResults); //get online status and create/push object into successResults / errorResults
+    callChannels(channels, successResults, errorResults); //get online status and create/push object into successResults / errorResults
 
 
     displayChannel(successResults[i]); // display completed channel object
@@ -47,11 +47,13 @@ function Channel(name, url, stream, logo) {
 ////////////////////////////////////////////////////////////////////////////////////////
 // online status is not sent with channel logo,  a separate request must be made.
 
-function isOnline(channels, successResults, errorResults) {
+function callChannels(channels, successResults, errorResults) {
 	console.log("getting stream status");
+
     for (var i = 0; i < channels.length; i++) {
     	console.log()
         console.log("https://api.twitch.tv/kraken/streams/" + channels[i] + "?client_id=gnebhh24itgmuajfxv5sofgpu0uzz8f");
+        
         $.ajax({
             url: "https://api.twitch.tv/kraken/streams/" + channels[i] + "?client_id=gnebhh24itgmuajfxv5sofgpu0uzz8f",
             dataType: 'jsonp', //jsonfm for debugging purposes. Change back to json when time to launch
@@ -70,7 +72,9 @@ function isOnline(channels, successResults, errorResults) {
             },
             error: function(errObj, errStr) {console.log("ERROR:  " + errStr); }
         });
+
     }
+
     getLogo(successResults, channels); // match on channel name and save logo url in Channel object
 }
 
@@ -124,7 +128,6 @@ function displayChannel(channelObj) {
             '<i class="contents fa fa-circle fa-2x online" aria-hidden="true"></i>' +
             '<a class = "contents" href="https://www.twitch.tv/' + channelObj.name + '"><h2>' + channelObj.name + '</h2></a>' +
             '<p class = "status">' + channelObj.stream.channel.status + '</p> </div>');
-
     }
 }
 
