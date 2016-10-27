@@ -2,14 +2,14 @@
 //////////////////////////////      ISSUES         /////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-// Alphabetize channels before display. 
-// 	Figure out a way to display channel after logos have all be saved
-
 // ReDo Color Scheme
 
-// Style input
+// Style textbox
 
-// hide "channel errors" div until there is actually an error
+// make pop-up message to notify user of channel found (same if not found)
+
+// sort divs by online/offline/all
+
 ////////////////////////////////////////////////////////////////////////////////////////
 var channels = ["FreeCodeCamp", "BobRoss", "NoCopyrightSounds", "Food"];
 var successResults = [];
@@ -23,7 +23,7 @@ $(document).ready(function(e) {
         event.preventDefault();
     });
 
-    callChannels(); //get online status and create/push object into successResults / errorResults
+    callChannels(); 
     //callChannels will call getLogos once all ajax requests have been completed
     //getLogos will make additional ajax requests to attain channel logo urls
     //once getLogos requests are finished, call displayChannel and displayError
@@ -38,12 +38,12 @@ function Channel(name, url, stream) {
     this.name = name;
     this.url = url;
     this.stream = stream; //stream object, valued at null if channel is offline
-    //Twitch.tv's default image (only filled if channel is online)
+    //Twitch.tv's default image (replaced if channel is found AND has uploaded a photo)
     this.logo = "https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png";
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
-// online status is not sent with channel logo,  a separate request must be made.
+// get online status and create/push object into successResults / errorResults
 
 function callChannels() {
     successResults = []; //clear successful calls 
@@ -78,7 +78,7 @@ function callChannels() {
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // this function is dependent on callChannels being completed
-//   it's purpose is to get logo URL for each channel requested
+//   its purpose is to get a logo URL for each channel requested
 
 function getLogo() {
     var finishedCount = 0;
@@ -102,9 +102,9 @@ function getLogo() {
             error: function(errObj, errStr) { console.log("ERROR:  " + errStr); }
         }).always(function() {
             finishedCount++;
-            if (channels.length === finishedCount) { // all requests accounted for
+            if (channels.length === finishedCount) { // all requests accounted for?
                 displayChannels(); //(re)print all channel
-                displayError();
+                displayError(); //(re)print all errors
             } //close if
         }); //close .always
     } // close loop
