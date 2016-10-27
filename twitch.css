@@ -42,13 +42,16 @@ div.channel img{
 	width:100px;
 	float:left;
 }
+div.channel.error{
+	display:none;
+}
 
-div#error h3{
+div.channel.error h3{
 	padding: .7em;
 	float: left;
 }
 div#error p{
-	margin: 0 3em;
+	margin: 0 12.7em;
 }
 a:link{
 	color:#5762D5;
