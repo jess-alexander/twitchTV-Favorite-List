@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link rel="stylesheet" type="text/css" href="twitch.css">
-	<title>Twitch.tv Index</title>
-</head>
-<body>
-<div class = "container">
-	<div>
-		<h1>Twitch.tv Picks</h1>
-	</div>
-	<div>
-		<form>
-			<label for="search" aria-hidden="true">Add a Channel</label>
-			<input type="text" id="search" placeholder="Add a Channel"></input>
-			<input type="submit" id="submit">
-		</form>
-		
-	</div>
 
-	<div id = "channel-results">
-		<div id = success></div>
-		<div class = "channel error">
-			<h3>Channel Errors</h3>
-			<div id = "error"></div>
-		</div>
-	</div>
-</div>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<!-- local script -->
-<script type="text/javascript" src="twitch.js"></script>
-<!-- Font Awesome -->
-	<script src="https://use.fontawesome.com/f1a4de6791.js"></script>
+<head>
+    <link rel="stylesheet" type="text/css" href="twitch.css">
+    <title>Twitch.tv Index</title>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>Twitch.tv Picks</h1>
+        </div>
+        <div>
+            <form id="newChannel">
+                <label for="search" aria-hidden="true">Add a Channel</label>
+                <input type="text" id="search" placeholder="Add a Channel"></input>
+                <input type="submit" id="submit">
+            </form>
+            <form id="changeView">
+            </form>
+        </div>
+        <div id="channel-results">
+            <div id=success></div>
+            <div class="channel error">
+                <h3>Channel Errors</h3>
+                <div id="error"></div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- local script -->
+    <script type="text/javascript" src="twitch.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/f1a4de6791.js"></script>
 </body>
+
 </html>

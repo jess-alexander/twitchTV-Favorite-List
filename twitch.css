@@ -1,13 +1,14 @@
-body{
-	background-color: #32292F;
-	color:#D1E3DD;
-}
-.container {
-    text-align: center;
-    
+body {
+    background-color: #32292F;
+    color: #D1E3DD;
 }
 
-.channel {  /*dynamically created div to hold individual channels*/
+.container {
+    text-align: center;
+}
+
+.channel {
+    /*dynamically created div to hold individual channels*/
     display: inline-grid;
     text-align: left;
     display: block;
@@ -18,7 +19,8 @@ body{
     width: 600px;
 }
 
-.contents { /*channel name, online status*/
+.contents {
+    /*channel name, online status*/
     display: inline-block;
     margin-left: .5em;
 }
@@ -28,35 +30,38 @@ body{
 }
 
 p.status {
-    padding: 1em;
-    margin-left: 130px;
+    margin-left: 13em;
 }
-div.channel h2{
+
+div.channel h2 {
     line-height: .5em;
 }
 
-div.channel img{
-	margin: 0 3em ;
-	border-radius: 55px;
-	padding:.7em;
-	width:100px;
-	float:left;
-}
-div.channel.error{
-	display:none;
+div.channel img {
+    margin: 0 3em;
+    border-radius: 55px;
+    padding: .7em;
+    width: 100px;
+    float: left;
 }
 
-div.channel.error h3{
-	padding: .7em;
-	float: left;
+div.channel.error {
+    display: none;
 }
-div#error p{
-	margin: 0 12.7em;
+
+div.channel.error h3 {
+    padding: .7em;
+    float: left;
 }
-a:link{
-	color:#5762D5;
-	
+
+div#error p {
+    margin: 0 12.7em;
 }
-a:visited{
-	color:##6240A1;
+
+a:link {
+    color: #5762D5;
+}
+
+a:visited {
+    color: ##6240A1;
 }
