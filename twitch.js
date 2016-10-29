@@ -13,6 +13,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 var successResults = [];
 var errorResults = [];
+var listedChannels = ["FreeCodeCamp", "BobRoss", "NoCopyrightSounds", "Food","brunofin","comster404"];
 
 $(document).ready(function(e) {
 
@@ -20,30 +21,42 @@ $(document).ready(function(e) {
         event.preventDefault();
         var newChannel = [];
         newChannel.push($("input:first").val());
+        listedChannels.push($("input:first").val());
         callChannels(newChannel, successResults);
-        
     });
 
     $('div.view.all').click(function() {
         $(this).addClass("tabSelected");
         $('div.view.online').removeClass("tabSelected");
         $('div.view.offline').removeClass("tabSelected");
+        $('div.view.refresh').removeClass("tabSelected");
         displayChannels("all")
     });
     $('div.view.online').click(function() {
         $(this).addClass("tabSelected");
-        $('div.view.offline').removeClass("tabSelected");
         $('div.view.all').removeClass("tabSelected");
+        $('div.view.offline').removeClass("tabSelected");
+        $('div.view.refresh').removeClass("tabSelected");
         displayChannels("online")
     });
     $('div.view.offline').click(function() {
         $(this).addClass("tabSelected");
         $('div.view.all').removeClass("tabSelected");
         $('div.view.online').removeClass("tabSelected");
+        $('div.view.refresh').removeClass("tabSelected");
         displayChannels("offline")
     });
+    $('div.view.refresh').click(function() {
+        $(this).addClass("tabSelected");
+        $('div.view.all').addClass("tabSelected");
+        $('div.view.online').removeClass("tabSelected");
+        $('div.view.offline').removeClass("tabSelected");
+        successResults = []; //clear previous channel data
+        errorResults = [];
+        callChannels(listedChannels); //load fresh data
+    });
 
-    callChannels(["FreeCodeCamp", "BobRoss", "NoCopyrightSounds", "Food","brunofin","comster404"]);
+    callChannels(listedChannels);
     //callChannels will call getLogos once all ajax requests have been completed
     //getLogos will make additional ajax requests to attain channel logo urls
     //once getLogos requests are finished, call displayChannel and displayError
@@ -173,6 +186,7 @@ function displayChannels(online) {
                 break;
         }
     });
+    $('.view').css("display","inline-block");
 }
 
 function appendChannel(channelObj) {
@@ -184,7 +198,7 @@ function appendChannel(channelObj) {
         $("#success").append(
             '<div class = "channel">' +
             '<img src="' + channelObj.logo + '" alt="twitch.tv ' + channelObj.name + ' logo">' +
-            '<i class="contents fa fa-circle-o fa-2x online" aria-hidden="true"></i>' +
+            '<i class="contents fa fa-circle-o fa-2x" aria-hidden="true"></i>' +
             '<a class = "contents" href="https://www.twitch.tv/' + channelObj.name + '"><h2>' + channelObj.name + '</h2></a>' +
             '<p class = " status">OFFLINE</p> ' +
             '<p class="status clock">' + channelObj.timeStamp + '</p></div>');
@@ -192,7 +206,7 @@ function appendChannel(channelObj) {
         $("#success").append(
             '<div class = "channel">' +
             '<img src="' + channelObj.logo + '" alt="twitch.tv ' + channelObj.name + ' logo">' +
-            '<i class="contents fa fa-circle fa-2x online" aria-hidden="true"></i>' +
+            '<i class="contents fa fa-circle fa-2x" aria-hidden="true"></i>' +
             '<a class = "contents" href="https://www.twitch.tv/' + channelObj.name + '"><h2>' + channelObj.name + '</h2></a>' +
             '<p class = "status">' + channelObj.stream.channel.status + '</p>' +
             '<p class="status clock">' + channelObj.timeStamp + '</p></div>');

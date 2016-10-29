@@ -11,11 +11,15 @@ body {
     width: 75px;
     height: 20px;
     background-color: purple;
-    margin: .6em 0px 0px 0px;
+    margin: .6em 0px -2px 0px;
     display: inline-block;
-    border: solid 1px whitesmoke;
-
+    border-top: solid 1px whitesmoke;
+    border-right: solid 1px whitesmoke;
+    border-left: solid 1px whitesmoke;
+    display: none;
+    /*border-radius: 5px;*/
 }
+
 .tabSelected{
 	height:30px;
 	vertical-align: bottom;
@@ -39,10 +43,6 @@ body {
     margin-left: .5em;
 }
 
-.online {
-    color: green;
-}
-
 p.status {
     margin-left: 13em;
 }
@@ -58,7 +58,10 @@ div.channel img {
     width: 100px;
     float: left;
 }
+i.contents.fa{
+	color: green;
 
+}
 div.channel.error {
     display: none;
 }
