@@ -8,8 +8,6 @@
 
 // make pop-up message to notify user of channel found (same if not found)
 
-// sort divs by online/offline/all
-
 // display time of ajax request (similar to facebook's "1 hr ago")
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -23,14 +21,29 @@ $(document).ready(function(e) {
         var newChannel = [];
         newChannel.push($("input:first").val());
         callChannels(newChannel, successResults);
+        
     });
 
-    $('#changeView').submit(function(event) {
-        event.preventDefault();
-
+    $('div.view.all').click(function() {
+        $(this).addClass("tabSelected");
+        $('div.view.online').removeClass("tabSelected");
+        $('div.view.offline').removeClass("tabSelected");
+        displayChannels("all")
+    });
+    $('div.view.online').click(function() {
+        $(this).addClass("tabSelected");
+        $('div.view.offline').removeClass("tabSelected");
+        $('div.view.all').removeClass("tabSelected");
+        displayChannels("online")
+    });
+    $('div.view.offline').click(function() {
+        $(this).addClass("tabSelected");
+        $('div.view.all').removeClass("tabSelected");
+        $('div.view.online').removeClass("tabSelected");
+        displayChannels("offline")
     });
 
-    callChannels(["FreeCodeCamp", "BobRoss", "NoCopyrightSounds", "Food"]);
+    callChannels(["FreeCodeCamp", "BobRoss", "NoCopyrightSounds", "Food","brunofin","comster404"]);
     //callChannels will call getLogos once all ajax requests have been completed
     //getLogos will make additional ajax requests to attain channel logo urls
     //once getLogos requests are finished, call displayChannel and displayError
@@ -115,7 +128,7 @@ function getLogo(channels) {
         }).always(function() {
             finishedCount++;
             if (channels.length === finishedCount) { // all requests accounted for?
-                displayChannels(); //(re)print all channel
+                displayChannels("all"); //(re)print all channel
                 displayError(); //(re)print all errors
             } //close if
         }); //close .always
@@ -139,11 +152,26 @@ function sortArray(arr) {
     });
 }
 
-function displayChannels() {
+function displayChannels(online) {
     console.log("DISPLAY Channels");
     $("#success").html(""); //clear previous results
     sortArray(successResults).forEach(function(channelObj) { //reprint object by object
-        appendChannel(channelObj);
+
+        switch (online) {
+            case 'all':
+                appendChannel(channelObj);
+                break;
+            case 'online':
+                if (channelObj.stream !== null) { // if online...
+                    appendChannel(channelObj);
+                }
+                break;
+            case 'offline':
+                if (channelObj.stream == null) { // if offline...
+                    appendChannel(channelObj);
+                }
+                break;
+        }
     });
 }
 

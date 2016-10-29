@@ -7,12 +7,26 @@ body {
     text-align: center;
 }
 
+.view{
+    width: 75px;
+    height: 20px;
+    background-color: purple;
+    margin: .6em 0px 0px 0px;
+    display: inline-block;
+    border: solid 1px whitesmoke;
+
+}
+.tabSelected{
+	height:30px;
+	vertical-align: bottom;
+}
+
 .channel {
     /*dynamically created div to hold individual channels*/
     display: inline-grid;
     text-align: left;
     display: block;
-    margin: 1em auto;
+    margin: 0 auto;
     background-color: #575366;
     border: 1px solid #D1E3DD;
     overflow: hidden;

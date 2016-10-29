@@ -11,14 +11,17 @@
         <div>
             <h1>Twitch.tv Picks</h1>
         </div>
-        <div>
+        <div class = "header">
             <form id="newChannel">
                 <label for="search" aria-hidden="true">Add a Channel</label>
-                <input type="text" id="search" placeholder="Add a Channel"></input>
+                <input type="text" id="search" placeholder="Add a Channel">
                 <input type="submit" id="submit">
             </form>
-            <form id="changeView">
-            </form>
+            <div class = "view-parent ">
+            	<div class = "view all tabSelected">All</div>
+            	<div class = "view online">ONLINE</div>
+            	<div class = "view offline">OFFLINE</div>
+            </div>
         </div>
         <div id="channel-results">
             <div id=success></div>
